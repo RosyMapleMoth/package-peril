@@ -6,7 +6,7 @@ public class playerPerson : MonoBehaviour
 {
     float x = 0;
     float z = 0;
-    float rotSpeed = 300;
+    float rotSpeed = 3000;
 
 
     public CubeSelector mySelector;
@@ -64,18 +64,17 @@ public class playerPerson : MonoBehaviour
             }  
         }
         // FPS controls
-        
-        if (Input.GetMouseButtonDown(0))
-        {
-            GetComponent<CubeSelector>().PickUp();
-        }
-        if (Input.GetMouseButtonUp(0))
-        {
-            GetComponent<CubeSelector>().Drop();
-        }
         if (Input.GetMouseButtonDown(1))
         {
             GetComponent<CubeSelector>().ThrowCube();
+        }
+        else if (Input.GetMouseButtonUp(0))
+        {
+            GetComponent<CubeSelector>().Drop();
+        }
+        else if (Input.GetMouseButtonDown(0))
+        {
+            GetComponent<CubeSelector>().PickUp();
         }
     }
 }

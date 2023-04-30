@@ -54,6 +54,7 @@ public class CubeSelector : MonoBehaviour
             selectedCube.GetComponent<Rigidbody>().isKinematic = true;
             selectedCube.gameObject.layer = 6; // layer 6 is the "Held" layer
             selectedCube.transform.GetChild(0).gameObject.layer = 6; // layer 6 is the "Held" layer
+            selectedCube.transform.GetChild(1).gameObject.layer = 6;
         }
     }
 
@@ -63,10 +64,11 @@ public class CubeSelector : MonoBehaviour
         {
             heldCube.transform.parent = null;
             heldCube.GetComponent<Rigidbody>().isKinematic = false;
-            selectedCube.GetComponent<Package>().pickedUp = false;
+            heldCube.GetComponent<Package>().pickedUp = false;
+            heldCube.gameObject.layer = 0; // layer 6 is the "Held" layer
+            heldCube.transform.GetChild(0).gameObject.layer = 0; // layer 6 is the "Held" layer
+            heldCube.transform.GetChild(1).gameObject.layer = 0;
             heldCube = null;
-            selectedCube.layer = 0; // layer 6 is the "Held" layer
-            selectedCube.transform.GetChild(0).gameObject.layer = 0; // layer 6 is the "Held" layer
         }
     }
 
@@ -79,12 +81,13 @@ public class CubeSelector : MonoBehaviour
         {
             heldCube.transform.parent = null;
             heldCube.GetComponent<Rigidbody>().isKinematic = false;
-            selectedCube.GetComponent<Package>().pickedUp = false;
+            heldCube.GetComponent<Package>().pickedUp = false;
             // throw the direction the camara is looking
             heldCube.GetComponent<Rigidbody>().AddForce(Camera.main.transform.forward * 600, ForceMode.Force);
+            heldCube.gameObject.layer = 0; // layer 6 is the "Held" layer
+            heldCube.transform.GetChild(0).gameObject.layer = 0; // layer 6 is the "Held" layer
+            heldCube.transform.GetChild(1).gameObject.layer = 0;
             heldCube = null;
-            selectedCube.layer = 0; // layer 6 is the "Held" layer
-            selectedCube.transform.GetChild(0).gameObject.layer = 0; // layer 6 is the "Held" layer
 
         }
     }

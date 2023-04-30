@@ -1,17 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;    
 
 public class Package : MonoBehaviour
 {
     public float x = 0;
     public float z = 0;
     public float y = 0;
-
+    public string address;
+    public TextMeshPro text;
     public bool droppedOff = false;
     public bool pickedUp = false;
     bool selected = false;
     private bool droppedOffBAD = false;
+
+    public Material baseMat;
 
     // Start is called before the first frame update
     void Start()
@@ -45,7 +49,7 @@ public class Package : MonoBehaviour
         }
         else
         {
-            GetComponent<Renderer>().material.color = Color.white;
+            GetComponent<Renderer>().material = baseMat;
         }
     }
 
