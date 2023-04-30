@@ -41,18 +41,19 @@ public class CubeSelector : MonoBehaviour
         if (selectedCube != null)
         {
             selectedCube.transform.parent = transform.GetChild(0);
-            selectedCube.transform.localPosition = new Vector3(0, 0, 1);
+            selectedCube.transform.localPosition = new Vector3(0, 0, 1.5f);
 
             heldCube = selectedCube.GetComponent<Package>();
             heldCube.pickedUp = true;
             Debug.Log("Held Cube assigned: " + selectedCube.transform.eulerAngles.x + " , " + selectedCube.transform.eulerAngles.z);
             heldCube.x = selectedCube.transform.eulerAngles.x;
             heldCube.z = selectedCube.transform.eulerAngles.z;
-            roateHeldCube(new Vector3(heldCube.x,0,heldCube.z));
+            //roateHeldCube(new Vector3(heldCube.x,heldCube.y,heldCube.z));
             Debug.Log("Held Cube x and z: " + heldCube.x + " , " + heldCube.z);
 
             selectedCube.GetComponent<Rigidbody>().isKinematic = true;
             selectedCube.gameObject.layer = 6; // layer 6 is the "Held" layer
+            selectedCube.transform.GetChild(0).gameObject.layer = 6; // layer 6 is the "Held" layer
         }
     }
 
@@ -65,6 +66,7 @@ public class CubeSelector : MonoBehaviour
             selectedCube.GetComponent<Package>().pickedUp = false;
             heldCube = null;
             selectedCube.layer = 0; // layer 6 is the "Held" layer
+            selectedCube.transform.GetChild(0).gameObject.layer = 0; // layer 6 is the "Held" layer
         }
     }
 
@@ -82,6 +84,8 @@ public class CubeSelector : MonoBehaviour
             heldCube.GetComponent<Rigidbody>().AddForce(Camera.main.transform.forward * 600, ForceMode.Force);
             heldCube = null;
             selectedCube.layer = 0; // layer 6 is the "Held" layer
+            selectedCube.transform.GetChild(0).gameObject.layer = 0; // layer 6 is the "Held" layer
+
         }
     }
 

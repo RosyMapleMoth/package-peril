@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Package
+  - DeliveryZone
   layers:
   - Default
   - TransparentFX

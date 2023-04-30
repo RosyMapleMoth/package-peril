@@ -6,7 +6,7 @@ public class playerPerson : MonoBehaviour
 {
     float x = 0;
     float z = 0;
-    float rotSpeed = 60;
+    float rotSpeed = 300;
 
 
     public CubeSelector mySelector;
