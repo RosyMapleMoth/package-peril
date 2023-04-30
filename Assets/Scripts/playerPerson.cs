@@ -4,8 +4,12 @@ using UnityEngine;
 
 public class playerPerson : MonoBehaviour
 {
+    float x = 0;
+    float z = 0;
+    float rotSpeed = 60;
 
 
+    public CubeSelector mySelector;
 
     // Start is called before the first frame update
     void Start()
@@ -17,27 +21,61 @@ public class playerPerson : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+    
+        if (Input.GetKey(KeyCode.LeftShift))
+        {
+           if (Input.GetKey(KeyCode.W))
+            {
+                mySelector.heldCube.transform.RotateAround(mySelector.heldCube.transform.position, transform.right, rotSpeed * Time.deltaTime);
+            }
+            if (Input.GetKey(KeyCode.S))
+            {
+                mySelector.heldCube.transform.RotateAround(mySelector.heldCube.transform.position, -transform.right, rotSpeed * Time.deltaTime);
+
+            }
+            if (Input.GetKey(KeyCode.A))
+            {
+                mySelector.heldCube.transform.RotateAround(mySelector.heldCube.transform.position, Camera.main.transform.up, rotSpeed * Time.deltaTime);
+                
+            }
+            if (Input.GetKey(KeyCode.D))
+            {
+                mySelector.heldCube.transform.RotateAround(mySelector.heldCube.transform.position, -Camera.main.transform.up, rotSpeed * Time.deltaTime);
+                
+            }
+        }
+        else
+        {
+            if (Input.GetKey(KeyCode.W))
+            {
+                transform.position += transform.forward * Time.deltaTime * 10;
+            }
+            if (Input.GetKey(KeyCode.S))
+            {
+                transform.position -= transform.forward * Time.deltaTime * 10;
+            }
+            if (Input.GetKey(KeyCode.A))
+            {
+                transform.position -= transform.right * Time.deltaTime * 10;
+            }
+            if (Input.GetKey(KeyCode.D))
+            {
+                transform.position += transform.right * Time.deltaTime * 10;
+            }  
+        }
         // FPS controls
-        if (Input.GetKey(KeyCode.W))
+        
+        if (Input.GetMouseButtonDown(0))
         {
-            transform.position += transform.forward * Time.deltaTime * 10;
+            GetComponent<CubeSelector>().PickUp();
         }
-        if (Input.GetKey(KeyCode.S))
+        if (Input.GetMouseButtonUp(0))
         {
-            transform.position -= transform.forward * Time.deltaTime * 10;
+            GetComponent<CubeSelector>().Drop();
         }
-        if (Input.GetKey(KeyCode.A))
+        if (Input.GetMouseButtonDown(1))
         {
-            transform.position -= transform.right * Time.deltaTime * 10;
+            GetComponent<CubeSelector>().ThrowCube();
         }
-        if (Input.GetKey(KeyCode.D))
-        {
-            transform.position += transform.right * Time.deltaTime * 10;
-        }  
-
-
-
-
-
     }
 }
