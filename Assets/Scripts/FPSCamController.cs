@@ -11,9 +11,8 @@ public class FPSCamController : MonoBehaviour
     public float sensitivityY = 15F;
     public float minimumX = -360F;
     public float maximumX = 360F;
-    public float minimumY = -60F;
+    public float minimumY = -30F;
     public float maximumY = 60F;
-    public Transform Body;
     float rotationY = 0F;
     // Start is called before the first frame update
     void Start()
@@ -25,6 +24,10 @@ public class FPSCamController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (gmTimeAttack.Instance.gameOver)
+        {
+            return;
+        }
         if (axes == RotationAxes.MouseXAndY)
         {
             float rotationX = transform.localEulerAngles.y + Input.GetAxis("Mouse X") * sensitivityX;
