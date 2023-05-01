@@ -7,7 +7,6 @@ TagManager:
   - Camera
   - Package
   - DeliveryZone
-
   layers:
   - Default
   - TransparentFX
@@ -15,8 +14,7 @@ TagManager:
   - 
   - Water
   - UI
-  - Terrain
-  - top cube
+  - HeldBox
   - 
   - 
   - 
