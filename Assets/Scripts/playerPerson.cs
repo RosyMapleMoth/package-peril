@@ -105,6 +105,10 @@ public class playerPerson : MonoBehaviour
         {
             GetComponent<CubeSelector>().PickUp();
         }
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+           gmTimeAttack.Instance.EnterTruckMode();
+        }
     }
 
 

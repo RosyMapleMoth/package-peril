@@ -98,7 +98,7 @@ public class PlayerController_DM : MonoBehaviour
 
     private void OnPackage(InputAction.CallbackContext context)
     {
-        // Somehow communicate with overhead game controller script?
+        gmTimeAttack.Instance.EnterFirstPersonMode();
         return;
     }
 
