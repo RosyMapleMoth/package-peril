@@ -11,6 +11,7 @@ public class PlayerController_DM : MonoBehaviour
     private InputAction steerAction;
     private InputAction brakeAction;
 
+    public AudioSource s_Pedal;
 
     // Public Game Objects
     public Rigidbody truck;
@@ -56,11 +57,18 @@ public class PlayerController_DM : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        truck.centerOfMass = truck.centerOfMass - Vector3.up;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (pedal > 100)
+        {
+            if (!s_Pedal.isPlaying)
+                s_Pedal.Play();
+        } else
+            s_Pedal.Stop();
     }
     void FixedUpdate()
     {
