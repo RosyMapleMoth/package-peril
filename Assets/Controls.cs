@@ -55,6 +55,15 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": true
                 },
                 {
+                    ""name"": ""Horn"",
+                    ""type"": ""Button"",
+                    ""id"": ""6a74c9c7-dcf7-4619-8c02-bec9a796d1b8"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
                     ""name"": ""Package Mode"",
                     ""type"": ""Button"",
                     ""id"": ""415203c1-1bbb-420a-80d9-60856f09830c"",
@@ -218,6 +227,17 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""action"": ""Package Mode"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e5373c8d-e2a9-49a1-98c1-7f05a0a3428e"",
+                    ""path"": ""<Keyboard>/h"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Horn"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -229,6 +249,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         m_Driving_PedalReverse = m_Driving.FindAction("Pedal / Reverse", throwIfNotFound: true);
         m_Driving_Steer = m_Driving.FindAction("Steer", throwIfNotFound: true);
         m_Driving_Brake = m_Driving.FindAction("Brake", throwIfNotFound: true);
+        m_Driving_Horn = m_Driving.FindAction("Horn", throwIfNotFound: true);
         m_Driving_PackageMode = m_Driving.FindAction("Package Mode", throwIfNotFound: true);
     }
 
@@ -294,6 +315,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
     private readonly InputAction m_Driving_PedalReverse;
     private readonly InputAction m_Driving_Steer;
     private readonly InputAction m_Driving_Brake;
+    private readonly InputAction m_Driving_Horn;
     private readonly InputAction m_Driving_PackageMode;
     public struct DrivingActions
     {
@@ -302,6 +324,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         public InputAction @PedalReverse => m_Wrapper.m_Driving_PedalReverse;
         public InputAction @Steer => m_Wrapper.m_Driving_Steer;
         public InputAction @Brake => m_Wrapper.m_Driving_Brake;
+        public InputAction @Horn => m_Wrapper.m_Driving_Horn;
         public InputAction @PackageMode => m_Wrapper.m_Driving_PackageMode;
         public InputActionMap Get() { return m_Wrapper.m_Driving; }
         public void Enable() { Get().Enable(); }
@@ -321,6 +344,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @Brake.started += instance.OnBrake;
             @Brake.performed += instance.OnBrake;
             @Brake.canceled += instance.OnBrake;
+            @Horn.started += instance.OnHorn;
+            @Horn.performed += instance.OnHorn;
+            @Horn.canceled += instance.OnHorn;
             @PackageMode.started += instance.OnPackageMode;
             @PackageMode.performed += instance.OnPackageMode;
             @PackageMode.canceled += instance.OnPackageMode;
@@ -337,6 +363,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @Brake.started -= instance.OnBrake;
             @Brake.performed -= instance.OnBrake;
             @Brake.canceled -= instance.OnBrake;
+            @Horn.started -= instance.OnHorn;
+            @Horn.performed -= instance.OnHorn;
+            @Horn.canceled -= instance.OnHorn;
             @PackageMode.started -= instance.OnPackageMode;
             @PackageMode.performed -= instance.OnPackageMode;
             @PackageMode.canceled -= instance.OnPackageMode;
@@ -362,6 +391,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         void OnPedalReverse(InputAction.CallbackContext context);
         void OnSteer(InputAction.CallbackContext context);
         void OnBrake(InputAction.CallbackContext context);
+        void OnHorn(InputAction.CallbackContext context);
         void OnPackageMode(InputAction.CallbackContext context);
     }
 }

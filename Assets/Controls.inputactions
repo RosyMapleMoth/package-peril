@@ -33,6 +33,15 @@
                     "initialStateCheck": true
                 },
                 {
+                    "name": "Horn",
+                    "type": "Button",
+                    "id": "6a74c9c7-dcf7-4619-8c02-bec9a796d1b8",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "Package Mode",
                     "type": "Button",
                     "id": "415203c1-1bbb-420a-80d9-60856f09830c",
@@ -194,6 +203,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "Package Mode",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e5373c8d-e2a9-49a1-98c1-7f05a0a3428e",
+                    "path": "<Keyboard>/h",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Horn",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
