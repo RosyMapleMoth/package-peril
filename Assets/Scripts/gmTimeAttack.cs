@@ -16,9 +16,17 @@ public class gmTimeAttack : MonoBehaviour
     public packageGenerator generator;
     public GameObject playerPerson;
     public GameObject playerTruck;
+    public GameObject playerTruckCam;
+    public movingVanSim Sim;
     public List<Package> ActivePackages;
     public List<PackageDropOff> InactivePackages;
     public static gmTimeAttack Instance { get; private set; }
+    public enum Mode
+    {
+        FirstPerson,
+        Truck
+    }
+    public Mode curMode = Mode.FirstPerson;
 
 
     /// <summary>
@@ -38,7 +46,7 @@ public class gmTimeAttack : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        Sim.SwitchToStopped();
     }
 
     // Update is called once per frame
@@ -75,20 +83,38 @@ public class gmTimeAttack : MonoBehaviour
 
     public void EnterFirstPersonMode()
     {
-        Debug.Log("Entering First Person Mode");
-
-
+        if (curMode == Mode.FirstPerson)
+        {
+            return;
+        }
+        curMode = Mode.FirstPerson;
+        Sim.SwitchToStopped();
+        playerTruckCam.SetActive(false);
+        playerPerson.SetActive(true);
     }
 
     public void EnterTruckMode()
     {
-        Debug.Log("Entering Truck Mode");
-
+        if (curMode == Mode.Truck)
+        {
+            return;
+        }
+        curMode = Mode.Truck;
+        Sim.SwitchToDriving();
+        playerTruckCam.SetActive(true);
+        playerTruck.SetActive(true);
+        playerPerson.SetActive(false);
     }
 
     public void packageDropOff(Package package)
     {
         Debug.Log("Package Dropped Off");
         ActivePackages.Remove(package);
+    }
+
+
+    public void scorePoint()
+    {
+        score += 1;
     }
 }

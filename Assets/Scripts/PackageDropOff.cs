@@ -16,14 +16,21 @@ public class PackageDropOff : MonoBehaviour
     void Start()
     {
         addressVisual.text = address;
-        player = FindObjectOfType<playerPerson>().gameObject;
+        player = gmTimeAttack.Instance.playerPerson.gameObject;
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.parent.transform.LookAt(player.transform);
-        addressVisual.text = address;
+        try
+        {
+            transform.parent.transform.LookAt(player.transform);
+            addressVisual.text = address;
+        }
+        catch
+        {
+
+        }
     }
 
     /// <summary>
@@ -32,7 +39,6 @@ public class PackageDropOff : MonoBehaviour
     /// <param name="other">The other Collider involved in this collision.</param>
     void OnTriggerEnter(Collider other)
     {
-        Debug.Log("oh dear");
         if (other.gameObject.CompareTag("Package"))
         {
             if (other.GetComponent<Package>().pickedUp)
@@ -41,12 +47,13 @@ public class PackageDropOff : MonoBehaviour
             }
             if (other.gameObject == CorrectCubeObj)
             {
-                Debug.Log("Gotum");
+                Debug.Log("Dropped off package at " + address);
                 other.GetComponent<Package>().dropOff();
+                gmTimeAttack.Instance.scorePoint();
             }
             else
             {
-                Debug.Log("Gotum BAD");
+                Debug.Log("Dropped off package " + other.GetComponent<Package>().address + " at " + address + " (BAD DROP OFF) ");
                 other.GetComponent<Package>().dropOffBAD();
             }
 
