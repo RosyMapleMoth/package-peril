@@ -9,21 +9,19 @@ public class packageGenerator : MonoBehaviour
 
     float i = 2f;
 
+    public string[] addresses = new string[] { "Alabama", "Alaska", "Arizona", "Arkansas", "California", "Colorado", "Connecticut", "Delaware", "Florida",};
+
 
     // Start is called before the first frame update
     void Start()
     {
-        PackageDropOff[] temp = FindObjectsOfType<PackageDropOff>();
-        foreach (PackageDropOff i in temp)
-        {
-            dropOffs.Add(i);
-        }
+        initlaizeAddresses();
     }
 
     // Update is called once per frame
     void Update()
     {
-        i -= Time.deltaTime;
+        /*i -= Time.deltaTime;
         if (i < 0)
         {
             try
@@ -35,10 +33,10 @@ public class packageGenerator : MonoBehaviour
                 Debug.Log("No more drop off points");
             }
             i = 2f;
-        }
+        }*/
     }
 
-    public void CreatePackage()
+    public Package CreatePackage()
     {
         GameObject newPackage = Instantiate(packages[Random.Range(0, packages.Count)]);
         newPackage.transform.position = transform.position;
@@ -48,5 +46,16 @@ public class packageGenerator : MonoBehaviour
         newPackage.GetComponent<Package>().text.text = dropOffs[temp].address;
         dropOffs[temp].InUse = true;
         dropOffs.RemoveAt(temp);
+        return newPackage.GetComponent<Package>();
+    }
+
+    public void initlaizeAddresses()
+    {
+        PackageDropOff[] temp = FindObjectsOfType<PackageDropOff>();
+        foreach (PackageDropOff i in temp)
+        {
+            i.address = Random.Range(100,9999) + " " + addresses[Random.Range(0,addresses.Length)];
+            dropOffs.Add(i);
+        }
     }
 }

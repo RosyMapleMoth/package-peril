@@ -66,6 +66,7 @@ public class Package : MonoBehaviour
     public void dropOff()
     {
         droppedOff = true;
+        gmTimeAttack.Instance.packageDropOff(this);
         GetComponent<Renderer>().material.color = Color.blue;
     }
 

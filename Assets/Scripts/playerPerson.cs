@@ -6,7 +6,10 @@ public class playerPerson : MonoBehaviour
 {
     float x = 0;
     float z = 0;
-    float rotSpeed = 3000;
+    public float rotSpeed = 300;
+    public float moveSpeed = 7;
+
+    public CapsuleCollider myCollider;
 
 
     public CubeSelector mySelector;
@@ -21,47 +24,73 @@ public class playerPerson : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (gmTimeAttack.Instance.gameOver)
+        {
+            return;
+        }
     
         if (Input.GetKey(KeyCode.LeftShift))
         {
            if (Input.GetKey(KeyCode.W))
             {
-                mySelector.heldCube.transform.RotateAround(mySelector.heldCube.transform.position, transform.right, rotSpeed * Time.deltaTime);
+                mySelector.heldCube.transform.RotateAround(mySelector.heldCube.transform.position, mySelector.pickUpCam.transform.right, rotSpeed * Time.deltaTime);
             }
             if (Input.GetKey(KeyCode.S))
             {
-                mySelector.heldCube.transform.RotateAround(mySelector.heldCube.transform.position, -transform.right, rotSpeed * Time.deltaTime);
+                mySelector.heldCube.transform.RotateAround(mySelector.heldCube.transform.position, -mySelector.pickUpCam.transform.right, rotSpeed * Time.deltaTime);
 
             }
             if (Input.GetKey(KeyCode.A))
             {
-                mySelector.heldCube.transform.RotateAround(mySelector.heldCube.transform.position, Camera.main.transform.up, rotSpeed * Time.deltaTime);
+                mySelector.heldCube.transform.RotateAround(mySelector.heldCube.transform.position, mySelector.pickUpCam.transform.up, rotSpeed * Time.deltaTime);
                 
             }
             if (Input.GetKey(KeyCode.D))
             {
-                mySelector.heldCube.transform.RotateAround(mySelector.heldCube.transform.position, -Camera.main.transform.up, rotSpeed * Time.deltaTime);
-                
+                mySelector.heldCube.transform.RotateAround(mySelector.heldCube.transform.position, -mySelector.pickUpCam.transform.up, rotSpeed * Time.deltaTime);
             }
         }
         else
         {
+            RaycastHit hit;
+            Vector3 move = new Vector3(0,0,0);   
             if (Input.GetKey(KeyCode.W))
             {
-                transform.position += transform.forward * Time.deltaTime * 10;
+                Ray ray = new Ray(transform.position, transform.forward);
+                if (!Physics.Raycast(ray,out hit, Time.deltaTime * moveSpeed + myCollider.radius)|| hit.collider.CompareTag("DeliveryZone"))
+                {
+                    move += transform.forward * Time.deltaTime * moveSpeed;
+                }
             }
             if (Input.GetKey(KeyCode.S))
             {
-                transform.position -= transform.forward * Time.deltaTime * 10;
+                Ray ray = new Ray(transform.position, -transform.forward);
+                if (!Physics.Raycast(ray,out hit, Time.deltaTime * moveSpeed + myCollider.radius)|| hit.collider.CompareTag("DeliveryZone"))
+                {
+                    move -= transform.forward * Time.deltaTime * moveSpeed;
+                }
             }
             if (Input.GetKey(KeyCode.A))
             {
-                transform.position -= transform.right * Time.deltaTime * 10;
+                Ray ray = new Ray(transform.position, -transform.right);
+                if (!Physics.Raycast(ray,out hit, Time.deltaTime * moveSpeed + myCollider.radius) || hit.collider.CompareTag("DeliveryZone"))
+                {
+                    move -= transform.right * Time.deltaTime * moveSpeed;
+                }
             }
             if (Input.GetKey(KeyCode.D))
             {
-                transform.position += transform.right * Time.deltaTime * 10;
+                Ray ray = new Ray(transform.position, transform.right);
+                if (!Physics.Raycast(ray,out hit, Time.deltaTime * moveSpeed + myCollider.radius)|| hit.collider.CompareTag("DeliveryZone"))
+                {
+                    move += transform.right * Time.deltaTime * moveSpeed;
+                }
             }  
+            Ray raydir = new Ray(transform.position, move.normalized);
+            if (!Physics.Raycast(raydir,out hit, move.magnitude + myCollider.radius) || hit.collider.CompareTag("DeliveryZone"))
+            {
+                transform.position += move;
+            }
         }
         // FPS controls
         if (Input.GetMouseButtonDown(1))
@@ -77,4 +106,24 @@ public class playerPerson : MonoBehaviour
             GetComponent<CubeSelector>().PickUp();
         }
     }
+
+
+
+
+    /// <summary>
+    /// OnTriggerStay is called once per frame for every Collider other
+    /// that is touching the trigger.
+    /// </summary>
+    /// <param name="other">The other Collider involved in this collision.</param>
+    void OnTriggerStay(Collider other)
+    {
+        if (other.CompareTag("TruckEnterZone"))
+        {
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                gmTimeAttack.Instance.EnterTruckMode();
+            }
+        }
+    }
+
 }

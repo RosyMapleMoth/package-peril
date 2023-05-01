@@ -6,6 +6,7 @@ public class CubeSelector : MonoBehaviour
 {
     public GameObject selectedCube;
     public Package heldCube; 
+    public Camera pickUpCam;
     public float PickUpRange = 2f;  
     // Start is called before the first frame update
     void Start()
@@ -40,8 +41,9 @@ public class CubeSelector : MonoBehaviour
     {
         if (selectedCube != null)
         {
-            selectedCube.transform.parent = transform.GetChild(0);
-            selectedCube.transform.localPosition = new Vector3(0, 0, 1.5f);
+            selectedCube.transform.parent = pickUpCam.gameObject.transform;
+            selectedCube.transform.localPosition = new Vector3(0, 0, 1f);
+            GetComponent<CapsuleCollider>().radius = 1;
 
             heldCube = selectedCube.GetComponent<Package>();
             heldCube.pickedUp = true;
@@ -62,6 +64,25 @@ public class CubeSelector : MonoBehaviour
     {
         if (heldCube != null)
         {
+            /*Vector3 rayOrigin = new Vector3(0.5f, 0.5f, 0f);
+            Ray ray = Camera.main.ViewportPointToRay(rayOrigin);
+
+            // debug Ray
+            Debug.DrawRay(ray.origin, ray.direction * PickUpRange, Color.blue);
+
+            RaycastHit hit;
+            if (Physics.Raycast(ray, out hit, PickUpRange))
+            {
+                heldCube.transform.parent = null;
+                heldCube.transform.position = hit.point + new Vector3(0.5f, 0.5f, 0);
+            }
+            else
+            {
+                heldCube.transform.parent = null;
+                heldCube.transform.position = gameObject.transform.position + new Vector3(0, 0, 1f);
+            }*/
+            GetComponent<CapsuleCollider>().radius = 0.5f;
+            heldCube.transform.position = gameObject.transform.GetChild(0).position + gameObject.transform.GetChild(0).forward;
             heldCube.transform.parent = null;
             heldCube.GetComponent<Rigidbody>().isKinematic = false;
             heldCube.GetComponent<Package>().pickedUp = false;
@@ -79,6 +100,7 @@ public class CubeSelector : MonoBehaviour
     {
         if (heldCube != null)
         {
+            heldCube.transform.position = gameObject.transform.GetChild(0).position + gameObject.transform.GetChild(0).forward;
             heldCube.transform.parent = null;
             heldCube.GetComponent<Rigidbody>().isKinematic = false;
             heldCube.GetComponent<Package>().pickedUp = false;
