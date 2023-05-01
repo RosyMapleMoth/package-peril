@@ -4,19 +4,39 @@ using UnityEngine;
 
 public class PlayerController_DM : MonoBehaviour
 {
-    private Vector3 vec = Vector3.right;
+    public Rigidbody truck;
+    //public Vector3[] forceVectors = new Vector3[4];
+
+    /*
+    public float maxSpeed;
+    public float turnSpeed;
+    public float accelSpeed;
+    public float maxSteer;
+
+    private int [] tireState = [0,0,0,0];
+    private int tireIndex;
+    private float tireAngle = 0;
+    private float frontSpeed = 0;
+    private float rearSpeed = 0;
+    */
+
+
+
+
+    private int active = 0;
     private float offset = 5F;
     // Start is called before the first frame update
     void Start()
     {
-        
+        truck = GetComponent <Rigidbody>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        //transform.Rotate(0, Mathf.Sin(30F * Time.deltaTime), 
-        //                0, Space.Self);
-        transform.position = vec * Mathf.PingPong(5 * Time.deltaTime, 50);
+    }
+    void FixedUpdate()
+    {
+        
     }
 }
