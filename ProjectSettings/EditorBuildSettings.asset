@@ -4,6 +4,15 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/MainMenu.unity
+    guid: 615bc3c3f07e8c64b9ac541377df0fb2
+  - enabled: 1
+    path: Assets/TimeAttack.unity
+    guid: 844bf4ad73065954d8a934d877571fa1
+  - enabled: 1
+    path: Assets/timeAttackEasy.unity
+    guid: a15596a0a01692b499e6e596328799df
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 2923afcf188030c4d93da5bc449ce5d8, type: 2}

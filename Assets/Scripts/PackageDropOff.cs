@@ -12,6 +12,8 @@ public class PackageDropOff : MonoBehaviour
     public GameObject CorrectCubeObj;
     public bool InUse = false;
 
+    public object TruckCam { get; private set; }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -24,7 +26,15 @@ public class PackageDropOff : MonoBehaviour
     {
         try
         {
-            transform.LookAt(player.transform);
+            if (gmTimeAttack.Instance.curMode == gmTimeAttack.Mode.FirstPerson)
+            {
+                transform.LookAt(gmTimeAttack.Instance.playerPerson.transform);
+            }
+            else
+            {
+                transform.LookAt(gmTimeAttack.Instance.playerTruckCam.transform);
+            }
+            //transform.LookAt(player.transform);
             addressVisual.text = address;
         }
         catch

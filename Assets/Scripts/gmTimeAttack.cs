@@ -63,12 +63,16 @@ public class gmTimeAttack : MonoBehaviour
             GAMEOVERSCREEN.SetActive(true);
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
+            return; 
         }
         else
         {
             time -= Time.deltaTime;
         }
-
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+           gmTimeAttack.Instance.switchMode();
+        }
         if (ActivePackages.Count < 5)
         {   
             try
