@@ -21,6 +21,8 @@ public class gmTimeAttack : MonoBehaviour
     public List<Package> ActivePackages;
     public List<PackageDropOff> InactivePackages;
     public static gmTimeAttack Instance { get; private set; }
+
+    public bool switchedThisTurn = false;    
     public enum Mode
     {
         FirstPerson,
@@ -80,6 +82,32 @@ public class gmTimeAttack : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// LateUpdate is called every frame, if the Behaviour is enabled.
+    /// It is called after all Update functions have been called.
+    /// </summary>
+    void LateUpdate()
+    {
+        switchedThisTurn = false;
+    }
+
+    public void switchMode()
+    {
+        if (switchedThisTurn)
+        {
+            return;
+        }
+        switchedThisTurn = true;
+        if (curMode == Mode.FirstPerson)
+        {
+            EnterTruckMode();
+        }
+        else
+        {
+            EnterFirstPersonMode();
+        }
+    }
+
 
     public void EnterFirstPersonMode()
     {
@@ -88,6 +116,7 @@ public class gmTimeAttack : MonoBehaviour
             return;
         }
         curMode = Mode.FirstPerson;
+        playerTruck.SetActive(false);
         Sim.SwitchToStopped();
         playerTruckCam.SetActive(false);
         playerPerson.SetActive(true);

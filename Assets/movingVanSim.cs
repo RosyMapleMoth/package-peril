@@ -36,7 +36,7 @@ public class movingVanSim : MonoBehaviour
         }
         else if (state == VanState.Stopped)
         {
-            
+
         }
     }
 
@@ -67,10 +67,10 @@ public class movingVanSim : MonoBehaviour
         {
             i.transform.SetParent(VanSim.transform.GetChild(0));
         }
-        Player.transform.position = VanSim.transform.position + Van.right * 2 + Van.forward * 2;
-        Player.SetActive(true);
         VanSim.transform.position = Van.transform.position;
         VanSim.transform.rotation = Van.rotation;
+        Player.transform.position = VanSim.transform.position + -Van.forward * 3 + new Vector3(0,4,0);
+        Player.SetActive(true);
         foreach (GameObject i in packages)
         {
             i.transform.SetParent(null);
