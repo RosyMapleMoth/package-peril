@@ -8,6 +8,7 @@ TagManager:
   - Package
   - DeliveryZone
   - TruckEnterZone
+  - TruckPackageZone
   layers:
   - Default
   - TransparentFX

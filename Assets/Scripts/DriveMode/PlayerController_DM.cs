@@ -98,7 +98,7 @@ public class PlayerController_DM : MonoBehaviour
 
     private void OnPackage(InputAction.CallbackContext context)
     {
-        gmTimeAttack.Instance.EnterFirstPersonMode();
+        gmTimeAttack.Instance.switchMode();
         return;
     }
 

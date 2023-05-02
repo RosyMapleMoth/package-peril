@@ -57,7 +57,7 @@ public class playerPerson : MonoBehaviour
             if (Input.GetKey(KeyCode.W))
             {
                 Ray ray = new Ray(transform.position, transform.forward);
-                if (!Physics.Raycast(ray,out hit, Time.deltaTime * moveSpeed + myCollider.radius)|| hit.collider.CompareTag("DeliveryZone"))
+                if (!Physics.Raycast(ray,out hit, Time.deltaTime * moveSpeed + myCollider.radius)|| hit.collider.CompareTag("DeliveryZone")|| hit.collider.CompareTag("TruckPackageZone"))
                 {
                     move += transform.forward * Time.deltaTime * moveSpeed;
                 }
@@ -65,7 +65,7 @@ public class playerPerson : MonoBehaviour
             if (Input.GetKey(KeyCode.S))
             {
                 Ray ray = new Ray(transform.position, -transform.forward);
-                if (!Physics.Raycast(ray,out hit, Time.deltaTime * moveSpeed + myCollider.radius)|| hit.collider.CompareTag("DeliveryZone"))
+                if (!Physics.Raycast(ray,out hit, Time.deltaTime * moveSpeed + myCollider.radius)|| hit.collider.CompareTag("DeliveryZone")|| hit.collider.CompareTag("TruckPackageZone"))
                 {
                     move -= transform.forward * Time.deltaTime * moveSpeed;
                 }
@@ -73,7 +73,7 @@ public class playerPerson : MonoBehaviour
             if (Input.GetKey(KeyCode.A))
             {
                 Ray ray = new Ray(transform.position, -transform.right);
-                if (!Physics.Raycast(ray,out hit, Time.deltaTime * moveSpeed + myCollider.radius) || hit.collider.CompareTag("DeliveryZone"))
+                if (!Physics.Raycast(ray,out hit, Time.deltaTime * moveSpeed + myCollider.radius) || hit.collider.CompareTag("DeliveryZone")|| hit.collider.CompareTag("TruckPackageZone"))
                 {
                     move -= transform.right * Time.deltaTime * moveSpeed;
                 }
@@ -81,13 +81,13 @@ public class playerPerson : MonoBehaviour
             if (Input.GetKey(KeyCode.D))
             {
                 Ray ray = new Ray(transform.position, transform.right);
-                if (!Physics.Raycast(ray,out hit, Time.deltaTime * moveSpeed + myCollider.radius)|| hit.collider.CompareTag("DeliveryZone"))
+                if (!Physics.Raycast(ray,out hit, Time.deltaTime * moveSpeed + myCollider.radius)|| hit.collider.CompareTag("DeliveryZone") || hit.collider.CompareTag("TruckPackageZone"))
                 {
                     move += transform.right * Time.deltaTime * moveSpeed;
                 }
             }  
             Ray raydir = new Ray(transform.position, move.normalized);
-            if (!Physics.Raycast(raydir,out hit, move.magnitude + myCollider.radius) || hit.collider.CompareTag("DeliveryZone"))
+            if (!Physics.Raycast(raydir,out hit, move.magnitude + myCollider.radius) || hit.collider.CompareTag("DeliveryZone")|| hit.collider.CompareTag("TruckPackageZone"))
             {
                 transform.position += move;
             }
@@ -107,7 +107,7 @@ public class playerPerson : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.Q))
         {
-           gmTimeAttack.Instance.EnterTruckMode();
+           gmTimeAttack.Instance.switchMode();
         }
     }
 

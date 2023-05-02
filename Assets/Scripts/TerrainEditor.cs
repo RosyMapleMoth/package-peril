@@ -17,7 +17,7 @@ public class TerrainEditor : MonoBehaviour
         {
             for (int j = 0; j < res; j++)
             {
-                mesh[i,j] = Mathf.PerlinNoise(i* multiplier, j * multiplier) * 3f;
+                mesh[i,j] = Mathf.PerlinNoise(i* multiplier, j * multiplier) * 0.1f;
             }
         }
         this.terrain.terrainData.SetHeights(0,0,mesh);
