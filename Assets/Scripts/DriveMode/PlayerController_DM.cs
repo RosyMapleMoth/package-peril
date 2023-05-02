@@ -12,6 +12,7 @@ public class PlayerController_DM : MonoBehaviour
     private InputAction brakeAction;
 
     public AudioSource s_Pedal;
+    public AudioSource s_Horn;
 
     // Public Game Objects
     public Rigidbody truck;
@@ -41,6 +42,8 @@ public class PlayerController_DM : MonoBehaviour
         brakeAction = actions.FindActionMap("Driving").FindAction("Brake");
 
         actions.FindActionMap("Driving").FindAction("Package Mode").performed += OnPackage;
+
+        actions.FindActionMap("Driving").FindAction("Horn").performed += OnHorn;
     }
 
     void OnEnable()
@@ -85,6 +88,12 @@ public class PlayerController_DM : MonoBehaviour
             tires[i].brakeTorque = brake;
         }
         
+    }
+
+    private void OnHorn(InputAction.CallbackContext context)
+    {
+        if (!s_Horn.isPlaying)
+            s_Horn.Play();
     }
 
     private void OnPackage(InputAction.CallbackContext context)
