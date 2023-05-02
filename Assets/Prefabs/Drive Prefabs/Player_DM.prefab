@@ -655,7 +655,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 0e9137f7c67a0634b99cc1257b6c9483, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -811,6 +811,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: d9c268ab871b34c4b9ab8bcc18203fdb, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 0e9137f7c67a0634b99cc1257b6c9483, type: 2}
     - target: {fileID: 919132149155446097, guid: d9c268ab871b34c4b9ab8bcc18203fdb, type: 3}
       propertyPath: m_Name
       value: TireRL
@@ -956,6 +960,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: d9c268ab871b34c4b9ab8bcc18203fdb, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 0e9137f7c67a0634b99cc1257b6c9483, type: 2}
     - target: {fileID: 919132149155446097, guid: d9c268ab871b34c4b9ab8bcc18203fdb, type: 3}
       propertyPath: m_Name
       value: TireRR
@@ -1030,6 +1038,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 6a6edd89f9dfac642a68588b0e6a2728, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 79f5d59cfa235024c975c44588d977ad, type: 2}
     - target: {fileID: 919132149155446097, guid: 6a6edd89f9dfac642a68588b0e6a2728, type: 3}
       propertyPath: m_Name
       value: MovingVanDoor
@@ -1260,6 +1272,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 5cfca512bde090c41b3b83773738dc53, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 9d3b764b4be93aa4f88aa06df9a1ffdf, type: 2}
     - target: {fileID: 919132149155446097, guid: 5cfca512bde090c41b3b83773738dc53, type: 3}
       propertyPath: m_Name
       value: MovingVan
@@ -1338,6 +1354,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: d9c268ab871b34c4b9ab8bcc18203fdb, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 0e9137f7c67a0634b99cc1257b6c9483, type: 2}
     - target: {fileID: 919132149155446097, guid: d9c268ab871b34c4b9ab8bcc18203fdb, type: 3}
       propertyPath: m_Name
       value: TireFR

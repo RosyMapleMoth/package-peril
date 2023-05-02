@@ -24,7 +24,7 @@ public class PackageDropOff : MonoBehaviour
     {
         try
         {
-            transform.parent.transform.LookAt(player.transform);
+            transform.LookAt(player.transform);
             addressVisual.text = address;
         }
         catch

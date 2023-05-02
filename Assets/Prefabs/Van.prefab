@@ -937,6 +937,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 5cfca512bde090c41b3b83773738dc53, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 9d3b764b4be93aa4f88aa06df9a1ffdf, type: 2}
     - target: {fileID: 919132149155446097, guid: 5cfca512bde090c41b3b83773738dc53, type: 3}
       propertyPath: m_Name
       value: MovingVan
@@ -1011,6 +1015,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 90
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: d9c268ab871b34c4b9ab8bcc18203fdb, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 79f5d59cfa235024c975c44588d977ad, type: 2}
     - target: {fileID: 919132149155446097, guid: d9c268ab871b34c4b9ab8bcc18203fdb, type: 3}
       propertyPath: m_Name
       value: wheel (3)
@@ -1080,6 +1088,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 90
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: d9c268ab871b34c4b9ab8bcc18203fdb, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 79f5d59cfa235024c975c44588d977ad, type: 2}
     - target: {fileID: 919132149155446097, guid: d9c268ab871b34c4b9ab8bcc18203fdb, type: 3}
       propertyPath: m_Name
       value: wheel
@@ -1149,6 +1161,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 90
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: d9c268ab871b34c4b9ab8bcc18203fdb, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 79f5d59cfa235024c975c44588d977ad, type: 2}
     - target: {fileID: 919132149155446097, guid: d9c268ab871b34c4b9ab8bcc18203fdb, type: 3}
       propertyPath: m_Name
       value: wheel (2)
@@ -1218,6 +1234,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 90
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: d9c268ab871b34c4b9ab8bcc18203fdb, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 79f5d59cfa235024c975c44588d977ad, type: 2}
     - target: {fileID: 919132149155446097, guid: d9c268ab871b34c4b9ab8bcc18203fdb, type: 3}
       propertyPath: m_Name
       value: wheel (1)
